@@ -1,11 +1,16 @@
 package com.buggyrjh.projectmanager.model;
 
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-//@Table(name = 'projects')
+@Data
+@NoArgsConstructor
+@Table(name="projects")
 public class Project {
     @Id
     private Long id;
@@ -13,9 +18,8 @@ public class Project {
 
     @ManyToOne
     private Company company;
-    @OneToMany
+    @OneToMany(mappedBy = "id")
     private Set<Task> tasks;
-    @OneToMany
+    @OneToMany(mappedBy = "id")
     private Set<User> users;
-
 }
