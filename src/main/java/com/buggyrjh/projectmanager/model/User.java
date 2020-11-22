@@ -1,55 +1,44 @@
 package com.buggyrjh.projectmanager.model;
-
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Set;
+import java.util.UUID;
 
-@Entity
-@Data
-@NoArgsConstructor
-@Table(name="users")
 public class User {
-    @Id
-    private Long id;
-    private String login;
-//            password, passwordToCompare, firstName, lastName, emailAddress,
-//    mobileNumber, mobileNumberCountryCode, addressLine1, addressLine2,
-//    addressCity, addressPostCode, addressCountry;
 
-//    @ManyToOne(cascade = CascadeType.PERSIST)
-//    private Company company;
-    @OneToMany(mappedBy = "id")
+                // ##### Initialise member variables ##### //
+    private String login, password, passwordToCompare, firstName, lastName, emailAddress,
+    mobileNumber, mobileNumberCountryCode, addressLine1, addressLine2,
+    addressCity, addressPostCode, addressCountry;
+
+                        // ### Map to ORM SQL ### //
+    private UUID id;
+    private Company company;
     private Set<Task> tasks;
-    @ManyToOne
     private Project project;
 
-//    public User(String loginId, String password, String passwordToCompare, String firstName, String lastName,
+                    // ##### Constructor empty and full ##### //
+    public User(@JsonProperty("id") UUID id,
+                @JsonProperty("login") String login) {
+        this.id = id;
+//    String password, String passwordToCompare, String firstName, String lastName,
 //                String emailAddress, String mobileNumber, String mobileNumberCountryCode, String addressLine1,
 //                String addressLine2, String addressCity, String addressPostCode, String addressCountry) {
-//        this.loginId = loginId;
-//        this.password = password;
+//        this.mobileNumberCountryCode = mobileNumberCountryCode;
 //        this.passwordToCompare = passwordToCompare;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
+//        this.addressPostCode = addressPostCode;
+//        this.addressCountry = addressCountry;
 //        this.emailAddress = emailAddress;
 //        this.mobileNumber = mobileNumber;
-//        this.mobileNumberCountryCode = mobileNumberCountryCode;
 //        this.addressLine1 = addressLine1;
 //        this.addressLine2 = addressLine2;
 //        this.addressCity = addressCity;
-//        this.addressPostCode = addressPostCode;
-//        this.addressCountry = addressCountry;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//
-//    public Long getId() {
-//        return id;
-//    }
+//        this.firstName = firstName;
+//        this.password = password;
+//        this.lastName = lastName;
+        this.login = login;
+    }
+
+    // ##### Setters ##### //
 //    public void setMobileNumberCountryCode(String mobileNumberCountryCode) { this.mobileNumberCountryCode = mobileNumberCountryCode; }
 //    public void setPasswordToCompare(String passwordToCompare) { this.passwordToCompare = passwordToCompare; }
 //    public void setAddressPostCode(String addressPostCode) { this.addressPostCode = addressPostCode; }
@@ -62,8 +51,10 @@ public class User {
 //    public void setFirstName(String firstName) { this.firstName = firstName; }
 //    public void setLastName(String lastName) { this.lastName = lastName; }
 //    public void setPassword(String password) { this.password = password; }
-//
-//    public void setLoginId(String userId) { this.loginId = userId; }
+    public void setLoginId(String login) { this.login = login; }
+    public void setId(UUID id) { this.id = id; }
+
+                    // ##### Getters ##### //
 //    public String getMobileNumberCountryCode() { return mobileNumberCountryCode; }
 //    public String getPasswordToCompare() { return passwordToCompare; }
 //    public String getAddressPostCode() { return addressPostCode; }
@@ -76,7 +67,7 @@ public class User {
 //    public String getFirstName() { return firstName; }
 //    public String getLastName() { return lastName; }
 //    public String getPassword() { return password; }
-//
-//    public String getLoginId() { return loginId; }
+    public String getLogin() { return login; }
+    public UUID getId() { return id; }
 
 }
