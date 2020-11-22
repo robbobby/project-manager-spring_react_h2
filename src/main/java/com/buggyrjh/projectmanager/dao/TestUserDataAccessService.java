@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Repository("postgres")
-public class UserDataAccessService implements UserDao {
+@Repository("testData")
+public class TestUserDataAccessService implements UserDao {
 
     private static List<User> DB = new ArrayList<>();
     @Override
