@@ -20,19 +20,19 @@ public class UserDataAccessService implements UserDao {
     public List<User> selectAllUsers() { return DB;
     }
     @Override
-    public Optional<User> selectUserById(UUID id) {
+    public Optional<User> selectUser(UUID id) {
         return Optional.empty();
     }
     @Override
-    public int deletePersonById(UUID id) {
-        Optional<User> user = selectUserById(id);
+    public int deleteUser(UUID id) {
+        Optional<User> user = selectUser(id);
         user.ifPresent(value -> DB.remove(value));
         return 0;
     }
 
     @Override
-    public int updateUserById(UUID id, User user) {
-        return selectUserById(id)                                                   // Select the user with ID -- know this works
+    public int updateUser(UUID id, User user) {
+        return selectUser(id)                                                   // Select the user with ID -- know this works
                 .map(userToUpdate -> {                                              // Map the return value of the above to 'userToUpdate'
                     int indexOfUserToUpdate = DB.indexOf(userToUpdate);             // Get the index of the user and store it
                     if (indexOfUserToUpdate >=0) {                                  // Check that it returned a valid user id

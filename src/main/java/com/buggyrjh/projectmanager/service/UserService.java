@@ -18,18 +18,19 @@ public class UserService {
     public UserService(@Qualifier("postgres") UserDao userDao) {
         this.userDao = userDao;
     }
-
-    public int addUser(User user) {
+    public int set(User user) {
         return userDao.insertUser(user);
     }
-
-    public List<User> getAllUsers() {
+    public Optional<User> select(UUID id) {
+        return userDao.selectUser(id);
+    }
+    public List<User> selectAll() {
         return userDao.selectAllUsers();
     }
-    public Optional<User> getUserById(UUID id) {
-        return userDao.selectUserById(id);
+    public int delete(UUID id) {
+        return userDao.deleteUser(id);
     }
-    public int deleteUser(UUID id) { return userDao.deletePersonById(id); }
-
-    public int updateUser(UUID id, User user) { return userDao.updateUserById(id, user); }
+    public int update(UUID id, User user) {
+        return userDao.updateUser(id, user);
+    }
 }
