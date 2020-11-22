@@ -1,6 +1,6 @@
 package com.buggyrjh.projectmanager.service;
 
-import com.buggyrjh.projectmanager.dao.UserDao;
+import com.buggyrjh.projectmanager.dao.users.UserDao;
 import com.buggyrjh.projectmanager.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

@@ -1,4 +1,4 @@
-package com.buggyrjh.projectmanager.dao;
+package com.buggyrjh.projectmanager.dao.users;
 
 import com.buggyrjh.projectmanager.model.User;
 

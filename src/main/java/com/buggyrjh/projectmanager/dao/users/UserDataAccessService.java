@@ -1,4 +1,4 @@
-package com.buggyrjh.projectmanager.dao;
+package com.buggyrjh.projectmanager.dao.users;
 
 import com.buggyrjh.projectmanager.model.User;
 import org.springframework.stereotype.Repository;
@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository("postgres")
-public class DataAccessService implements UserDao {
+public class UserDataAccessService implements UserDao {
     private static List<User> DB = new ArrayList<>();
 
     @Override
